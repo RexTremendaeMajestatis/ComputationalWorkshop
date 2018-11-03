@@ -114,18 +114,23 @@ namespace NumericalAnalysis
 
         static void Main(string[] args)
         {
+            // Segment bounds and split range
             var a = 0.0;
             var b = 1.0;
             var m = 10;
 
+            // Equidistant table
             var table = GetEquidistantTable(a, b, m, F_I);
             OutputTools.Print(table);
 
+            // Image value and polynome order
             var F = Lab4.CheckF(ref table);
             var n = Lab4.CheckN(ref table);
 
+            // Accurate preimage value
             var expected = Solve(a, b, F, F_I);
 
+            // Approximate preimage value
             var preimage_I = Lab4.Preimage_I(F, n, ref table);
             var preimage_II = Lab4.Preimage_II(F, n, ref table);
 
@@ -138,11 +143,14 @@ namespace NumericalAnalysis
 
             Console.WriteLine();
 
+            // New table set function
             table = GetEquidistantTable(a, b, m, F_II);
 
+            // Derivatives and second derivatives in nodes of table set function
             var der = Lab4.Derivatives(ref table);
             var sder = Lab4.SecondDerivatives(ref table);
 
+            // Error of derivatives in nodes of table set function
             var derror = new double[m + 1];
 
             for (int i = 0; i < m + 1; i++)
@@ -150,6 +158,7 @@ namespace NumericalAnalysis
                 derror[i] = Math.Abs(F_II_D(table[i, 0]) - der[i]);
             }
 
+            // Error of second derivatives in nodes of table set function
             var sderror = new double[m + 1];
 
             for (int i = 1; i < m; i++)

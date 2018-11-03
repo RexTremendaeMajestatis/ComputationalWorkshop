@@ -6,6 +6,11 @@ namespace NumericalAnalysis
 {
     public static class OutputTools
     {
+        /// <summary>
+        /// Print all table values
+        /// </summary>
+        /// <typeparam name="T">Type that table contains</typeparam>
+        /// <param name="table">Table</param>
         public static void Print<T>(T[,] table)
         {
             for (int i = 0; i < table.GetLength(0); i++)
@@ -22,6 +27,11 @@ namespace NumericalAnalysis
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Print all vector values
+        /// </summary>
+        /// <typeparam name="T">Type that vector contains</typeparam>
+        /// <param name="vector">Vector</param>
         public static void Print<T>(T[] vector)
         {
             for (int i = 0; i < vector.Length; i++)
@@ -32,6 +42,12 @@ namespace NumericalAnalysis
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Print all table and vectors values
+        /// </summary>
+        /// <typeparam name="T">Type that table and vectors contain</typeparam>
+        /// <param name="table">Table</param>
+        /// <param name="list">List of vectors</param>
         public static void Print<T>(double[,] table, params T[][] list)
         {
             int m = table.GetLength(0) - 1;

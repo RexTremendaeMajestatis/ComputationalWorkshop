@@ -7,6 +7,13 @@ namespace NumericalAnalysis
 {
     public static class Lab2
     {
+        /// <summary>
+        /// Get value of Lagrange interpolation polynome
+        /// </summary>
+        /// <param name="x">Value of preimage</param>
+        /// <param name="n">Degree of interpolation polynome</param>
+        /// <param name="table">Table set function</param>
+        /// <returns>Value of interpolation polynome image</returns>
         public static double Lagrange(double x, int n, ref double[,] table)
         {
             var sorted = TableTools.SortTable(x, ref table);
@@ -31,6 +38,13 @@ namespace NumericalAnalysis
             return result;
         }
 
+        /// <summary>
+        /// Get value of Newton interpolation polynome
+        /// </summary>
+        /// <param name="x">Value of preimage</param>
+        /// <param name="n">Degree of interpolation polynome</param>
+        /// <param name="table">Table set function</param>
+        /// <returns>Value of interpolation polynome image</returns>
         public static double Newton(double x, int n, ref double[,] table)
         {
             var sorted = TableTools.SortTable(x, ref table);

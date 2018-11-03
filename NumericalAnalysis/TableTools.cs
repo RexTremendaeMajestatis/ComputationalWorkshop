@@ -69,8 +69,8 @@ namespace NumericalAnalysis
         /// <summary>
         /// Get all finite differences
         /// </summary>
-        /// <param name="table"></param>
-        /// <returns></returns>
+        /// <param name="table">Table set function</param>
+        /// <returns>Table of finite differences</returns>
         public static double[,] FiniteDifferences(double[,] table)
         {
             var n = table.GetLength(0);
@@ -92,6 +92,12 @@ namespace NumericalAnalysis
             return result;
         }
 
+        /// <summary>
+        /// Get finite differences up to order n
+        /// </summary>
+        /// <param name="table">Table set function</param>
+        /// <param name="n">Order of the last finite difference</param>
+        /// <returns>Table of finite differences</returns>
         public static double[,] FiniteDifferences(double[,] table, int n)
         {
             var result = new double[n + 1, n + 1];
@@ -112,6 +118,11 @@ namespace NumericalAnalysis
             return result;
         }
 
+        /// <summary>
+        /// Get all divided differences
+        /// </summary>
+        /// <param name="table">Table set function</param>
+        /// <returns>Table of divided differences</returns>
         public static double[,] DividedDifferences(double[,] table)
         {
             var n = table.GetLength(0);
@@ -133,6 +144,12 @@ namespace NumericalAnalysis
             return result;
         }
 
+        /// <summary>
+        /// Get divided differences up to order n
+        /// </summary>
+        /// <param name="table">Table set function</param>
+        /// <param name="n">Orded of the last divided difference</param>
+        /// <returns>Table of divided differences</returns>
         public static double[,] DividedDifferences(double[,] table, int n)
         {
             var result = new double[n + 1, n + 1];
@@ -153,6 +170,11 @@ namespace NumericalAnalysis
             return result;
         }
 
+        /// <summary>
+        /// Get gaps of monotony of table set function
+        /// </summary>
+        /// <param name="table">Table set function</param>
+        /// <returns>List of table set finctions</returns>
         public static List<double[,]> GetGapsOfMonotony(ref double[,] table)
         {
             var gaps = new List<double[,]>();

@@ -4,15 +4,18 @@ using System.Text;
 
 namespace NumericalAnalysis
 {
+    /// <summary>
+    /// Laboratory work #3
+    /// </summary>
     public static class Lab3
     {
         /// <summary>
-        /// Value of error
+        /// Error
         /// </summary>
         static readonly double eps = 1e-8;
 
         /// <summary>
-        /// Tabe partition
+        /// Partition of table set function
         /// </summary>
         private enum PartOfTable
         {
@@ -23,8 +26,32 @@ namespace NumericalAnalysis
         }
 
         /// <summary>
-        /// Get point in the right way
+        /// Read and check degree of interpoation polynome
         /// </summary>
+        /// <param name="table">Table set function</param>
+        /// <returns>Degree of interpolation polynome</returns>
+        public static int CheckN(ref double[,] table)
+        {
+            var m = table.GetLength(0) - 1;
+
+            Console.WriteLine("Print a degree of polynome no greater than m ({0})", m);
+            var n = int.Parse(Console.ReadLine());
+
+            if ((n <= m) && (n >= 1))
+            {
+                return n;
+            }
+
+            Console.WriteLine("Something went wrong, try again");
+            return CheckN(ref table);
+        }
+
+        /// <summary>
+        /// Read and check value of preimage
+        /// </summary>
+        /// <param name="table">Table set function</param>
+        /// <param name="n">Order of interpoation polynome</param>
+        /// <returns>Value of preimage</returns>
         public static double CheckX(ref double[,] table, int n)
         {
             var m = table.GetLength(0);
@@ -51,8 +78,12 @@ namespace NumericalAnalysis
         }
 
         /// <summary>
-        /// Compute the value
+        /// Get value of image by value of preimage
         /// </summary>
+        /// <param name="x">Value of preimage</param>
+        /// <param name="n">Order of interpolation polynome</param>
+        /// <param name="table">Table set function</param>
+        /// <returns></returns>
         public static double Evaluate(double x, int n, ref double[,] table)
         {
             var part = Part(x, n, ref table);
@@ -76,8 +107,12 @@ namespace NumericalAnalysis
         }
 
         /// <summary>
-        /// Get part of a table which point is related
+        /// Get part of table which value of preimage is related to
         /// </summary>
+        /// <param name="x">Value of preimage</param>
+        /// <param name="n">Order of interpolation polynome</param>
+        /// <param name="table">Table set function</param>
+        /// <returns></returns>
         private static PartOfTable Part(double x, int n, ref double[,] table)
         {
             var a = table[0, 0];
@@ -114,8 +149,11 @@ namespace NumericalAnalysis
         }
 
         /// <summary>
-        /// Get highest index of x in the table
+        /// Get upper index in table for value of preimage
         /// </summary>
+        /// <param name="x">Value of preimage</param>
+        /// <param name="table">Table set function</param>
+        /// <returns></returns>
         private static int Bounds(double x, double[,] table)
         {
             var result = 0;
@@ -138,8 +176,12 @@ namespace NumericalAnalysis
         }
 
         /// <summary>
-        /// Compute a value in the beginning of the table
+        /// Get image value for preimages from beginning of table
         /// </summary>
+        /// <param name="x">Value of preimage</param>
+        /// <param name="n">Order of interpolation polynome</param>
+        /// <param name="table">Table set function</param>
+        /// <returns></returns>
         private static double BegValue(double x, int n, ref double[,] table)
         {
             var fdtable = TableTools.FiniteDifferences(ref table);
@@ -165,8 +207,12 @@ namespace NumericalAnalysis
         }
 
         /// <summary>
-        /// Compute a value in the end of the table
+        /// Get image value for preimages from end of table
         /// </summary>
+        /// <param name="x">Value of preimage</param>
+        /// <param name="n">Order of interpolation polynome</param>
+        /// <param name="table">Table set function</param>
+        /// <returns></returns>
         private static double EndValue(double x, int n, ref double[,] table)
         {
             var fdtable = TableTools.FiniteDifferences(ref table);
@@ -193,8 +239,12 @@ namespace NumericalAnalysis
         }
 
         /// <summary>
-        /// Compute a value in the middle of the table
+        /// Get image value for preimages from middle of table
         /// </summary>
+        /// <param name="x">Value of preimage</param>
+        /// <param name="n">Order of interpolation polynome</param>
+        /// <param name="table">Table set function</param>
+        /// <returns></returns>
         private static double MidValue(double x, int n, ref double[,] table)
         {
             var fdtable = TableTools.FiniteDifferences(ref table);
@@ -223,8 +273,10 @@ namespace NumericalAnalysis
         }
 
         /// <summary>
-        /// Generate aray of indexes for z
+        /// Generate array of indexes for interpolation polynome
         /// </summary>
+        /// <param name="n">Order of interpolation polynode</param>
+        /// <returns></returns>
         private static int[] GenerateIndex(int n)
         {
             var res = new int[n];

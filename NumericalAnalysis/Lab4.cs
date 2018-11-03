@@ -4,6 +4,9 @@ using System.Text;
 
 namespace NumericalAnalysis
 {
+    /// <summary>
+    /// Laboratory work #4
+    /// </summary>
     public static class Lab4
     {
         /// <summary>

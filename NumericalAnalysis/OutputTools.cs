@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NumericalAnalysis
+﻿namespace NumericalAnalysis
 {
+    using System;
+
+    /// <summary>
+    /// Tools for printing tables
+    /// </summary>
     public static class OutputTools
     {
         /// <summary>
@@ -24,6 +25,7 @@ namespace NumericalAnalysis
 
                 Console.WriteLine();
             }
+
             Console.WriteLine();
         }
 
@@ -54,7 +56,8 @@ namespace NumericalAnalysis
             
             for (int i = 0; i < m + 1; i++)
             {
-                Console.Write("{0:0000} | {1:0000.000} | {2:0000.00000000}",
+                Console.Write(
+                    "{0:0000} | {1:0000.000} | {2:0000.00000000}",
                     i + 1,
                     table[i, 0],
                     table[i, 1]);

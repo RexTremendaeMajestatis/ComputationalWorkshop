@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NumericalAnalysis
+﻿namespace NumericalAnalysis
 {
+    using System;
+
     /// <summary>
     /// Laboratory work #3
     /// </summary>
     public static class Lab3
     {
         /// <summary>
-        /// Error
+        /// Value of error
         /// </summary>
-        static readonly double eps = 1e-8;
+        private static readonly double Eps = 1e-8;
 
         /// <summary>
         /// Partition of table set function
@@ -83,7 +81,7 @@ namespace NumericalAnalysis
         /// <param name="x">Value of preimage</param>
         /// <param name="n">Order of interpolation polynome</param>
         /// <param name="table">Table set function</param>
-        /// <returns></returns>
+        /// <returns>Value of preimage</returns>
         public static double Evaluate(double x, int n, ref double[,] table)
         {
             var part = Part(x, n, ref table);
@@ -112,7 +110,7 @@ namespace NumericalAnalysis
         /// <param name="x">Value of preimage</param>
         /// <param name="n">Order of interpolation polynome</param>
         /// <param name="table">Table set function</param>
-        /// <returns></returns>
+        /// <returns>Part of table</returns>
         private static PartOfTable Part(double x, int n, ref double[,] table)
         {
             var a = table[0, 0];
@@ -153,7 +151,7 @@ namespace NumericalAnalysis
         /// </summary>
         /// <param name="x">Value of preimage</param>
         /// <param name="table">Table set function</param>
-        /// <returns></returns>
+        /// <returns>High bound index</returns>
         private static int Bounds(double x, double[,] table)
         {
             var result = 0;
@@ -181,7 +179,7 @@ namespace NumericalAnalysis
         /// <param name="x">Value of preimage</param>
         /// <param name="n">Order of interpolation polynome</param>
         /// <param name="table">Table set function</param>
-        /// <returns></returns>
+        /// <returns>Value of interpolation polynome image</returns>
         private static double BegValue(double x, int n, ref double[,] table)
         {
             var fdtable = TableTools.FiniteDifferences(ref table);
@@ -212,7 +210,7 @@ namespace NumericalAnalysis
         /// <param name="x">Value of preimage</param>
         /// <param name="n">Order of interpolation polynome</param>
         /// <param name="table">Table set function</param>
-        /// <returns></returns>
+        /// <returns>Value of interpolation polynome image</returns>
         private static double EndValue(double x, int n, ref double[,] table)
         {
             var fdtable = TableTools.FiniteDifferences(ref table);
@@ -244,7 +242,7 @@ namespace NumericalAnalysis
         /// <param name="x">Value of preimage</param>
         /// <param name="n">Order of interpolation polynome</param>
         /// <param name="table">Table set function</param>
-        /// <returns></returns>
+        /// <returns>Value of interpolation polynome image</returns>
         private static double MidValue(double x, int n, ref double[,] table)
         {
             var fdtable = TableTools.FiniteDifferences(ref table);
@@ -276,7 +274,7 @@ namespace NumericalAnalysis
         /// Generate array of indexes for interpolation polynome
         /// </summary>
         /// <param name="n">Order of interpolation polynode</param>
-        /// <returns></returns>
+        /// <returns>Array of indexes</returns>
         private static int[] GenerateIndex(int n)
         {
             var res = new int[n];

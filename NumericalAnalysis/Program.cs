@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace NumericalAnalysis
+﻿namespace NumericalAnalysis
 {
+    using System;
+
     public static class Program
     {
         /// <summary>
@@ -77,18 +77,18 @@ namespace NumericalAnalysis
         /// </summary>
         /// <param name="a">Beginning of segment</param>
         /// <param name="b">End of segment</param>
-        /// <param name="F">Value of image</param>
+        /// <param name="p">Value of image</param>
         /// <param name="f">Function</param>
         /// <param name="eps">Error</param>
         /// <returns>Value of preimage</returns>
-        public static double Solve(double a, double b, double F, Function f, double eps = 1e-8)
+        public static double Solve(double a, double b, double p, Function f, double eps = 1e-8)
         {
-            if (Math.Abs(f.Invoke(a) - F) < eps)
+            if (Math.Abs(f.Invoke(a) - p) < eps)
             {
                 return a;
             }
 
-            if (Math.Abs(f.Invoke(b) - F) < eps)
+            if (Math.Abs(f.Invoke(b) - p) < eps)
             {
                 return b;
             }
@@ -99,7 +99,7 @@ namespace NumericalAnalysis
             {
                 mid = (b + a) / 2;
 
-                if ((f.Invoke(a) - F) * (f.Invoke(mid) - F) < 0)
+                if ((f.Invoke(a) - p) * (f.Invoke(mid) - p) < 0)
                 {
                     b = mid;
                 }
@@ -112,7 +112,7 @@ namespace NumericalAnalysis
             return mid;
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             // Segment bounds and split range
             var a = 0.0;
@@ -124,20 +124,22 @@ namespace NumericalAnalysis
             OutputTools.Print(table);
 
             // Image value and polynome order
-            var F = Lab4.CheckF(ref table);
+            var p = Lab4.CheckF(ref table);
             var n = Lab4.CheckN(ref table);
 
             // Accurate preimage value
-            var expected = Solve(a, b, F, F_I);
+            var expected = Solve(a, b, p, F_I);
 
             // Approximate preimage value
-            var preimage_I = Lab4.Preimage_I(F, n, ref table);
-            var preimage_II = Lab4.Preimage_II(F, n, ref table);
+            var preimage_I = Lab4.Preimage_I(p, n, ref table);
+            var preimage_II = Lab4.Preimage_II(p, n, ref table);
 
-            Console.WriteLine("I: {0}, error: {1}",
+            Console.WriteLine(
+                "I: {0}, error: {1}",
                 preimage_I,
                 Math.Abs(preimage_I - expected));
-            Console.WriteLine("II: {0}, error: {1}",
+            Console.WriteLine(
+                "II: {0}, error: {1}",
                 preimage_II,
                 Math.Abs(preimage_II - expected));
 

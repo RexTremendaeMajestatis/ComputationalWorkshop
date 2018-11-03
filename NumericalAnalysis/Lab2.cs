@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace NumericalAnalysis
+﻿namespace NumericalAnalysis
 {
     /// <summary>
     /// Laboratory work #2
@@ -32,7 +27,6 @@ namespace NumericalAnalysis
                     {
                         l *= (x - sorted[j, 0]) / (sorted[i, 0] - sorted[j, 0]);
                     }
-
                 }
 
                 result += l * sorted[i, 1];

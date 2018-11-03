@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace NumericalAnalysis
+﻿namespace NumericalAnalysis
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    
+    /// <summary>
+    /// Tools for work with tables
+    /// </summary>
     public static class TableTools
     {
         /// <summary>
@@ -14,8 +16,7 @@ namespace NumericalAnalysis
         /// <param name="table">Table set function</param>
         /// <returns>Sorted by distance to x table</returns>
         public static double[,] SortTable(double x, ref double[,] table)
-        {
-
+        { 
             var m = table.GetLength(0) - 1;
             var tempDiv = new Dictionary<double, double>();
 
@@ -47,8 +48,8 @@ namespace NumericalAnalysis
         /// <summary>
         /// Swap coulumns of table
         /// </summary>
-        /// <param name="table"></param>
-        /// <returns></returns>
+        /// <param name="table">Table set function</param>
+        /// <returns>Table with swapped columns</returns>
         public static double[,] SwapColumns(double[,] table)
         {
             var rows = table.GetLength(0);
@@ -137,7 +138,7 @@ namespace NumericalAnalysis
             {
                 for (int i = 0; i < n - j; i++)
                 {
-                    result[i, j] = ((result[i + 1, j - 1] - result[i, j - 1]) / (table[i + 1, 0] - table[i, 0]));
+                    result[i, j] = (result[i + 1, j - 1] - result[i, j - 1]) / (table[i + 1, 0] - table[i, 0]);
                 }
             }
 
@@ -163,7 +164,7 @@ namespace NumericalAnalysis
             {
                 for (int i = 0; i < n - j + 1; i++)
                 {
-                    result[i, j] = ((result[i + 1, j - 1] - result[i, j - 1]) / (table[i + j, 0] - table[i, 0]));
+                    result[i, j] = (result[i + 1, j - 1] - result[i, j - 1]) / (table[i + j, 0] - table[i, 0]);
                 }
             }
 
@@ -174,7 +175,7 @@ namespace NumericalAnalysis
         /// Get gaps of monotony of table set function
         /// </summary>
         /// <param name="table">Table set function</param>
-        /// <returns>List of table set finctions</returns>
+        /// <returns>List of table set functions</returns>
         public static List<double[,]> GetGapsOfMonotony(ref double[,] table)
         {
             var gaps = new List<double[,]>();

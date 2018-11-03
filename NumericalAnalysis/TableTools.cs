@@ -71,7 +71,7 @@ namespace NumericalAnalysis
         /// </summary>
         /// <param name="table">Table set function</param>
         /// <returns>Table of finite differences</returns>
-        public static double[,] FiniteDifferences(double[,] table)
+        public static double[,] FiniteDifferences(ref double[,] table)
         {
             var n = table.GetLength(0);
             var result = new double[n, n];

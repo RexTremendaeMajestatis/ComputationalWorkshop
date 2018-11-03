@@ -133,12 +133,12 @@
                 return PartOfTable.Middle;
             }
 
-            if (Math.Abs(x - (a + (((n + 1) / 2) * h))) <= 0.00000000001)
+            if (Math.Abs(x - (a + (((n + 1) / 2) * h))) <= Eps)
             {
                 return PartOfTable.Middle;
             }
 
-            if (Math.Abs(x - (b - (((n + 1) / 2) * h))) <= 0.00000000001)
+            if (Math.Abs(x - (b - (((n + 1) / 2) * h))) <= Eps)
             {
                 return PartOfTable.Middle;
             }
@@ -165,7 +165,7 @@
                 }
             }
 
-            if (Math.Abs(x - table[result, 0]) < 0.00000001)
+            if (Math.Abs(x - table[result, 0]) < Eps)
             {
                 return result;
             }

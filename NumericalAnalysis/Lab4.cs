@@ -42,13 +42,29 @@
         {
             var m = table.GetLength(0) - 1;
 
+            var max = table[0, 1];
+            var min = table[0, 1];
+
+            for (int i = 0; i < m; i++)
+            {
+                if (max < table[i + 1, 1])
+                {
+                    max = table[i + 1, 1];
+                }
+
+                if (min > table[i + 1, 1])
+                {
+                    min = table[i + 1, 1];
+                }
+            }
+
             Console.WriteLine(
                 "Print a value of preimage in range of [{0}, {1}]",
-                table[0, 1],
-                table[m, 1]);
+                min,
+                max);
             var p = double.Parse(Console.ReadLine());
 
-            if ((p >= table[0, 1]) && (p <= table[m, 1]))
+            if ((p <= max) && (p >= min))
             {
                 return p;
             }

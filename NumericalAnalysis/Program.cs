@@ -115,8 +115,8 @@
         public static void Main(string[] args)
         {
             // Segment bounds and split range
-            var a = 0.0;
-            var b = 1.0;
+            var a = -1.0;
+            var b = 0.0;
             var m = 10;
 
             // Equidistant table

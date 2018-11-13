@@ -114,62 +114,10 @@
 
         public static void Main(string[] args)
         {
-            // Segment bounds and split range
-            var a = -1.0;
-            var b = 0.0;
-            var m = 10;
-
-            // Equidistant table
-            var table = GetEquidistantTable(a, b, m, F_I);
-            OutputTools.Print(table);
-
-            // Image value and polynome order
-            var p = Lab4.CheckF(ref table);
-            var n = Lab4.CheckN(ref table);
-
-            // Accurate preimage value
-            var expected = Solve(a, b, p, F_I);
-
-            // Approximate preimage value
-            var preimage_I = Lab4.Preimage_I(p, n, ref table);
-            var preimage_II = Lab4.Preimage_II(p, n, ref table);
-
-            Console.WriteLine(
-                "I: {0}, error: {1}",
-                preimage_I,
-                Math.Abs(preimage_I - expected));
-            Console.WriteLine(
-                "II: {0}, error: {1}",
-                preimage_II,
-                Math.Abs(preimage_II - expected));
-
-            Console.WriteLine();
-
-            // New table set function
-            table = GetEquidistantTable(a, b, m, F_II);
-
-            // Derivatives and second derivatives in nodes of table set function
-            var der = Lab4.Derivatives(ref table);
-            var sder = Lab4.SecondDerivatives(ref table);
-
-            // Error of derivatives in nodes of table set function
-            var derror = new double[m + 1];
-
-            for (int i = 0; i < m + 1; i++)
-            {
-                derror[i] = Math.Abs(F_II_D(table[i, 0]) - der[i]);
-            }
-
-            // Error of second derivatives in nodes of table set function
-            var sderror = new double[m + 1];
-
-            for (int i = 1; i < m; i++)
-            {
-                sderror[i] = Math.Abs(F_II_DD(table[i, 0]) - sder[i]);
-            }
-
-            OutputTools.Print(table, der, derror, sder, sderror);
-
+            var a = lab5.Rectangle(0, 1, 1000, Math.Exp, lab5.Part.Left);
+            var b = lab5.Rectangle(0, 1, 1000, Math.Exp, lab5.Part.Middle);
+            var c = lab5.Rectangle(0, 1, 1000, Math.Exp, lab5.Part.Right);
+            Console.WriteLine(a + "\t" + b + "\t" + c);
             Console.ReadLine();
             Main(args);
         }

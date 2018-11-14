@@ -5,6 +5,9 @@ namespace NumericalAnalysis
     {
         public delegate double Function(double x);
 
+        /// <summary>
+        /// The kind of rectangles
+        /// </summary>
         public enum Part
         {
             Left,
@@ -12,6 +15,15 @@ namespace NumericalAnalysis
             Right
         }
 
+        /// <summary>
+        /// The way of approximate integrating
+        /// </summary>
+        /// <returns>The value of integral from <paramref name="a"/> to <paramref name="b"/></returns>
+        /// <param name="a">The beginning of the segment</param>
+        /// <param name="b">The ending of the segment</param>
+        /// <param name="m">Amount of gaps</param>
+        /// <param name="f">The function</param>
+        /// <param name="part">Kind of rectangles</param>
         public static double Rectangle(
             double a,
             double b,
@@ -47,6 +59,14 @@ namespace NumericalAnalysis
             return h * sum;
         }
 
+        /// <summary>
+        /// The way of approximate integrating
+        /// </summary>
+        /// <returns>The value of integral from <paramref name="a"/> to <paramref name="b"/></returns>
+        /// <param name="a">The beginning of the segment</param>
+        /// <param name="b">The ending of the segment</param>
+        /// <param name="m">Amount of gaps</param>
+        /// <param name="f">The function</param>
         public static double Trapeze(double a, double b, int m, Function f)
         {
             var h = (b - a) / m;
@@ -60,6 +80,14 @@ namespace NumericalAnalysis
             return (h / 2) * sum;
         }
 
+        /// <summary>
+        /// The way of approximate integrating
+        /// </summary>
+        /// <returns>The value of integral from <paramref name="a"/> to <paramref name="b"/></returns>
+        /// <param name="a">The beginning of the segment</param>
+        /// <param name="b">The ending of the segment</param>
+        /// <param name="m">Amount of gaps</param>
+        /// <param name="f">The function</param>
         public static double Simpson(double a, double b, int m, Function f)
         {
             var h = (b - a) / (2 * m);
@@ -79,7 +107,5 @@ namespace NumericalAnalysis
 
             return (h / 3) * sum;
         }
-
-
     }
 }

@@ -3,8 +3,6 @@ namespace NumericalAnalysis
 {
     public static class Lab5
     {
-        public delegate double Function(double x);
-
         /// <summary>
         /// The kind of rectangles
         /// </summary>
@@ -28,7 +26,7 @@ namespace NumericalAnalysis
             double a,
             double b,
             int m,
-            Function f,
+            Function.F f,
             Part part)
         {
             var h = (b - a) / m;
@@ -67,7 +65,7 @@ namespace NumericalAnalysis
         /// <param name="b">The ending of the segment</param>
         /// <param name="m">Amount of gaps</param>
         /// <param name="f">The function</param>
-        public static double Trapeze(double a, double b, int m, Function f)
+        public static double Trapeze(double a, double b, int m, Function.F f)
         {
             var h = (b - a) / m;
             var sum = f(a) + f(b);
@@ -88,7 +86,7 @@ namespace NumericalAnalysis
         /// <param name="b">The ending of the segment</param>
         /// <param name="m">Amount of gaps</param>
         /// <param name="f">The function</param>
-        public static double Simpson(double a, double b, int m, Function f)
+        public static double Simpson(double a, double b, int m, Function.F f)
         {
             var h = (b - a) / (2 * m);
             var sum = f(a) + f(b);

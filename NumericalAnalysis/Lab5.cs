@@ -96,10 +96,12 @@ namespace NumericalAnalysis
                 if (i % 2 == 0)
                 {
                     sum += 2 * f(a + (i * h));
+                    Console.WriteLine(sum);
                 }
                 else
                 {
                     sum += 4 * f(a + (i * h));
+                    Console.WriteLine(sum);
                 }
             }
 

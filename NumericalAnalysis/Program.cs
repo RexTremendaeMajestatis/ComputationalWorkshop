@@ -1,6 +1,10 @@
 ﻿namespace NumericalAnalysis
 {
     using System;
+    using System;
+    using Microsoft.FSharp.Core;
+    using Microsoft.FSharp.Collections;
+    using NumericalAnalysisF;
 
     public static class Program
     {
@@ -123,8 +127,7 @@
             var b = 1.0;
             var m = 100;
             var h = w(2);
-            var moms = Lab6.Moments(a, b, 2, w);
-            OutputTools.Print(moms);
+            Console.WriteLine();
             Console.ReadLine();
             Main(args);
         }

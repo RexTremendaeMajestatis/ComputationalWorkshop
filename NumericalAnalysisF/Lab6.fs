@@ -6,6 +6,9 @@ open System
 let pow n x = 
     Math.Pow(x, n)
 
+let w x = 
+    Math.Pow(x, -0.25)
+
 let simpson a b m f = 
     let h = (b - a) / (float m * 2.0)
     

@@ -1,9 +1,6 @@
 ﻿namespace NumericalAnalysis
 {
     using System;
-    using System;
-    using Microsoft.FSharp.Core;
-    using Microsoft.FSharp.Collections;
     using NumericalAnalysisF;
 
     public static class Program
@@ -121,12 +118,43 @@
             return Math.Pow(x, -0.25);
         }
 
+        public static double f(double x)
+        {
+            return Math.Sin(x);
+        }
         public static void Main(string[] args)
         {
             var a = 0.0;
             var b = 1.0;
-            var m = 100;
-            var h = w(2);
+            //var m = 100;
+            var N = 2;
+            var moments = Lab6.Moments(a, b, N, w);
+            Console.WriteLine("Moments of weight function:");
+            OutputTools.Print(moments);
+            var polynome = Lab6.FindPolynome(moments);
+            Console.WriteLine("Orthogonal polynome coefficients:");
+            OutputTools.Print(polynome);
+
+            var x = AlgebraTools.SolveSquare(polynome);
+            Array.Sort(x);
+            Console.WriteLine("Roots of orthogonal polynome:");
+            OutputTools.Print(x);
+
+
+            var matrix = new double[2, 2] { { 1, 1 }, { x[0], x[1] } };
+            var vector = new double[2] { moments[0], moments[1] };
+            var A = AlgebraTools.Cramer(matrix, vector);
+            Console.WriteLine("A1 A2");
+            OutputTools.Print(A);
+
+            var integral = A[0] * f(x[0]) + A[1] * f(x[1]);
+
+            Console.WriteLine(
+                "Integrate sin(x)*x^(-0.25)dx, x={0}..{1}\t{2}",
+                a,
+                b,
+                integral);
+
             Console.WriteLine();
             Console.ReadLine();
             Main(args);

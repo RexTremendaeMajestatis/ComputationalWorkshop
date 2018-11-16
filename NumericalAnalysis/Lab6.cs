@@ -19,6 +19,38 @@ namespace NumericalAnalysis
 
             return moments;
         }
+
+        public static double[] FindPolynome(double[] moments)
+        {
+            var N = moments.Length / 2;
+            var matrix = new double[N, N];
+            var vector = new double[N];
+            var polynome = new double[N + 1];
+            polynome[0] = 1.0;
+
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    matrix[j, N - i - 1] = moments[j + i];
+                }
+            }
+
+            for (int i = 0; i < N; i++)
+            {
+                vector[N - i - 1] = -1 * moments[2 * N - i - 1];
+            }
+
+            vector =  AlgebraTools.Cramer(matrix, vector);
+
+            for (int i = 0; i < N; i++)
+            {
+                polynome[i + 1] = vector[i];
+            }
+
+            return polynome;
+        }
+
         private static double Moment(double a, double b, int k, Function.F w)
         {
             var h = (int)((b - a) / step);

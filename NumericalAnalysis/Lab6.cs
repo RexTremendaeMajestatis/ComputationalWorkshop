@@ -51,6 +51,29 @@ namespace NumericalAnalysis
             return polynome;
         }
 
+        public static double Gauss2Nodes(
+            double a,
+            double b,
+            int m,
+            Function.F f)
+        {
+            var h = (b - a) / m;
+            var hh = h / 2;
+            var sum = 0.0;
+            var t1 = -Math.Sqrt(3) / 3;
+            var t2 = Math.Sqrt(3) / 3;
+
+            for (int i = 0; i < m; i++)
+            {
+                var temp = a + i * h;
+                var f1 = f(hh * t1 + temp + hh);
+                var f2 = f(hh * t2 + temp + hh);
+                sum += hh * (f1 + f2);
+            }
+
+            return sum;
+        }
+
         private static double Moment(double a, double b, int k, Function.F w)
         {
             var h = (int)((b - a) / step);
@@ -82,5 +105,7 @@ namespace NumericalAnalysis
 
             return (h / 3) * sum;
         }
+
+
     }
 }

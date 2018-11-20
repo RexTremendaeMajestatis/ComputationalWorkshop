@@ -119,32 +119,6 @@
 
         public static void Main(string[] args)
         {
-            var A = 0.0;
-            var B = 1.0;
-            var m = 1000;
-            Lab5.Function f = Math.Sin;
-            var J = df(B) - df(A);
-            Console.WriteLine("Expected: {0}", J);
-            var J1 = Lab5.Rectangle(A, B, m, f, Lab5.Part.Left);
-            var J2 = Lab5.Rectangle(A, B, m, f, Lab5.Part.Middle);
-            var J3 = Lab5.Rectangle(A, B, m, f, Lab5.Part.Right);
-            var J4 = Lab5.Trapeze(A, B, m, f);
-            var J5 = Lab5.Simpson(A, B, m, f);
-            Console.WriteLine(
-                "Left rectangles:\t{0}\terror:\t{1}",
-                J1, Math.Abs(J - J1));
-            Console.WriteLine(
-                "Middle rectangles:\t{0}\terror:\t{1}",
-                J2, Math.Abs(J - J2));
-            Console.WriteLine(
-                "Rights rectangles:\t{0}\terror:\t{1}",
-                J3, Math.Abs(J - J3));
-            Console.WriteLine(
-                "Trapeze:\t{0}\terror:\t{1}",
-                J4, Math.Abs(J - J4));
-            Console.WriteLine(
-                "Simpson:\t{0}\terror:\t{1}",
-                J5, Math.Abs(J - J5));
             Console.ReadLine();
             Main(args);
         }

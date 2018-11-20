@@ -130,26 +130,6 @@
 
         public static void Main(string[] args)
         {
-            var a = 0.0;
-            var b = 1.0;
-            var m = 1000;
-            var N = 2;
-            var integral = Lab6.GaussType(a, b, N, w, f);
-            Console.WriteLine(
-                "Составная формула Гаусса: Integrate sin(x)*x^(-0.25)dx, x={0}..{1}\t{2}",
-                a,
-                b,
-                integral);
-                
-            var gauss = Lab6.Gauss2NodesCompound(a, b, m, g);
-            Console.WriteLine("Формула типа Гаусса: Integrate sin(x)*x^(-0.25)dx, x={0}..{1}\t{2}",
-                  a,
-                  b,
-                 gauss);
-
-            Console.WriteLine("abs: {0}", Math.Abs(integral - gauss));
-
-            Console.WriteLine();
             Console.ReadLine();
             Main(args);
         }

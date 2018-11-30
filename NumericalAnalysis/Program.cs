@@ -5,53 +5,6 @@
     public static class Program
     {
         /// <summary>
-        /// Container for functions
-        /// </summary>
-        /// <param name="x">Value of preimage</param>
-        /// <returns>Value of image</returns>
-        public delegate double Function(double x);
-
-        /// <summary>
-        /// (1 + x ^ 2) ^ (1 / 2)
-        /// </summary>
-        /// <param name="x">Value of preimaget</param>
-        /// <returns>Value of image</returns>
-        public static double F_I(double x)
-        {
-            return Math.Sqrt(1 + (x * x));
-        }
-
-        /// <summary>
-        /// e^(6 * x)
-        /// </summary>
-        /// <param name="x">Value of preimage</param>
-        /// <returns>Value of image</returns>
-        public static double F_II(double x)
-        {
-            return Math.Pow(Math.E, 6 * x);
-        }
-
-        /// <summary>
-        /// 6e^(6 * x)
-        /// </summary>
-        /// <param name="x">Value of preimage</param>
-        /// <returns>Value of image</returns>
-        public static double F_II_D(double x)
-        {
-            return 6 * Math.Pow(Math.E, 6 * x);
-        }
-
-        /// <summary>
-        /// 36e^(6 * x)
-        /// </summary>
-        /// <param name="x">Value of preimage</param>
-        /// <returns>Value of image</returns>
-        public static double F_II_DD(double x)
-        {
-            return 36 * Math.Pow(Math.E, 6 * x);
-        }
-
-        /// <summary>
         /// Get table set function with equidistant nodes
         /// </summary>
         /// <param name="a">Beginning of segment</param>
@@ -59,7 +12,7 @@
         /// <param name="m">Amount of parts</param>
         /// <param name="f">Function</param>
         /// <returns>Table set function</returns>
-        public static double[,] GetEquidistantTable(double a, double b, int m, Function f)
+        public static double[,] GetEquidistantTable(double a, double b, int m, Function.F f)
         {
             var table = new double[m + 1, 2];
 
@@ -67,6 +20,26 @@
             {
                 table[i, 0] = a + (((b - a) / (double)m) * i);
                 table[i, 1] = f.Invoke(table[i, 0]);
+            }
+
+            return table;
+        }
+
+        public static double[,] GetEquidistantTable(
+            double a,
+            double h,
+            int beg,
+            int N,
+            Function.F f)
+        {
+            int m = N - beg;
+
+            var table = new double[m + 1, 2];
+
+            for (int i = beg; i < N + 1; i++)
+            {
+                table[i - beg, 0] = a + (i * h);
+                table[i - beg, 1] = f.Invoke(a + (i * h));
             }
 
             return table;
@@ -81,7 +54,7 @@
         /// <param name="f">Function</param>
         /// <param name="eps">Error</param>
         /// <returns>Value of preimage</returns>
-        public static double Solve(double a, double b, double p, Function f, double eps = 1e-8)
+        public static double Solve(double a, double b, double p, Function.F f, double eps = 1e-8)
         {
             if (Math.Abs(f.Invoke(a) - p) < eps)
             {
@@ -111,14 +84,38 @@
 
             return mid;
         }
-
-        public static double df(double x)
+        
+        public static double y(double x)
         {
-            return -1 * Math.Cos(x);
+            return 1 / (1 + Math.Exp(x));
+        }
+
+        public static double Tailor(double x)
+        {
+            return (1 / 2.0) +
+                (-1 / 4.0) * x +
+                (1 / 8.0) * Math.Pow(x, 3) +
+                (-1 / 4.0) * Math.Pow(x, 5) +
+                (68 / 64.0) * Math.Pow(x, 7);
         }
 
         public static void Main(string[] args)
         {
+            var x0 = 0.0;
+            var h = 0.1;
+            var N = 10;
+
+            // I)
+            Console.WriteLine("I)");
+            var table = GetEquidistantTable(x0, h, -2, N, y);
+            OutputTools.Print(table);
+            Console.WriteLine();
+
+            // II)
+            Console.WriteLine("II)");
+            var tailorTable = GetEquidistantTable(x0, h, -2, 2, Tailor);
+            OutputTools.Print(tailorTable);
+
             Console.ReadLine();
             Main(args);
         }

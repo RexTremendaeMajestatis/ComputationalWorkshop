@@ -90,6 +90,11 @@
             return 1 / (1 + Math.Exp(x));
         }
 
+        public static double f(double x, double y)
+        {
+            return -y + (y * y);
+        }
+
         public static double Tailor(double x)
         {
             return (1 / 2.0) +
@@ -102,19 +107,54 @@
         public static void Main(string[] args)
         {
             var x0 = 0.0;
+            var y0 = 0.5;
             var h = 0.1;
             var N = 10;
+            var k0 = -2;
+            var k1 = 2;
+
+            Console.WriteLine("y' = -y + y^2\ny({0}) = {1}", x0, y0);
+            Console.WriteLine("h = {0}\nN = {1}\n{2} <= k <= {3}\n", h, N, k0, k1);
 
             // I)
             Console.WriteLine("I)");
-            var table = GetEquidistantTable(x0, h, -2, N, y);
+            var table = GetEquidistantTable(x0, h, k0, N, y);
             OutputTools.Print(table);
             Console.WriteLine();
 
             // II)
             Console.WriteLine("II)");
-            var tailorTable = GetEquidistantTable(x0, h, -2, 2, Tailor);
-            OutputTools.Print(tailorTable);
+            var m0 = k1 - k0;
+            var tailorTable = GetEquidistantTable(x0, h, k0, k1, Tailor);
+            var errorsTailor = new double[m0 + 1];
+
+            for (int i = 0; i < m0 + 1; i++)
+            {
+                errorsTailor[i] = Math.Abs(table[i, 1] - tailorTable[i, 1]);
+            }
+
+            OutputTools.Print(tailorTable, errorsTailor);
+
+            // VI)
+            Console.WriteLine("VI)");
+            var m1 = N;
+            var errorsEulerI = new double[m1 + 1];
+            var errorsEulerII = new double[m1 + 1];
+            var errorsEulerIII = new double[m1 + 1];
+            var eulerTableI = Lab7.EulerI(x0, y0, h, 1, N, f);
+            var eulerTableII = Lab7.EulerII(x0, y0, h, 1, N, f);
+            var eulerTableIII = Lab7.EulerIII(x0, y0, h, 1, N, f);
+
+            for (int i = 0; i < m1 + 1; i++)
+            {
+                errorsEulerI[i] = Math.Abs(table[i - k0, 1] - eulerTableI[i, 1]);
+                errorsEulerII[i] = Math.Abs(table[i - k0, 1] - eulerTableII[i, 1]);
+                errorsEulerIII[i] = Math.Abs(table[i - k0, 1] - eulerTableIII[i, 1]);
+            }
+
+            OutputTools.Print(eulerTableI, errorsEulerI);
+            OutputTools.Print(eulerTableII, errorsEulerII);
+            OutputTools.Print(eulerTableIII, errorsEulerIII);
 
             Console.ReadLine();
             Main(args);

@@ -21,7 +21,9 @@
         {
             var m = table.GetLength(0) - 1;
 
-            Console.WriteLine("Print a degree of polynome no greater than m ({0})", m);
+            Console.WriteLine(
+                "Print a degree of polynome no greater than m ({0})",
+                m);
             var n = int.Parse(Console.ReadLine());
 
             if ((n <= m) && (n >= 1))
@@ -115,7 +117,8 @@
             {
                 mid = (b + a) / 2;
 
-                if ((Lab2.Lagrange(a, n, ref table) - p) * (Lab2.Lagrange(mid, n, ref table) - p) < 0)
+                if ((Lab2.Lagrange(a, n, ref table) - p) *
+                    (Lab2.Lagrange(mid, n, ref table) - p) < 0)
                 {
                     b = mid;
                 }
@@ -138,7 +141,8 @@
             var m = table.GetLength(0) - 1;
             var derivatives = new double[m + 1];
 
-            derivatives[0] = ((-3 * table[0, 1]) + (4 * table[1, 1]) - table[2, 1]) /
+            derivatives[0] = ((-3 * table[0, 1]) + 
+                              (4 * table[1, 1]) - table[2, 1]) /
                 Math.Abs(table[2, 0] - table[0, 0]);
 
             for (int i = 1; i < m; i++)
@@ -147,7 +151,8 @@
                     Math.Abs(table[i + 1, 0] - table[i - 1, 0]);
             }
 
-            derivatives[m] = ((3 * table[m, 1]) - (4 * table[m - 1, 1]) + table[m - 2, 1]) /
+            derivatives[m] = ((3 * table[m, 1]) - (4 * table[m - 1, 1]) +
+                              table[m - 2, 1]) /
                 Math.Abs(table[m - 2, 0] - table[m, 0]);
 
             return derivatives;
@@ -166,7 +171,8 @@
 
             for (int i = 1; i < m; i++)
             {
-                secondDerivatives[i] = (table[i + 1, 1] - (2 * table[i, 1]) + table[i - 1, 1]) /
+                secondDerivatives[i] = (table[i + 1, 1] - (2 * table[i, 1]) +
+                                        table[i - 1, 1]) /
                     (h * h);
             }
 

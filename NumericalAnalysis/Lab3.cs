@@ -32,7 +32,9 @@
         {
             var m = table.GetLength(0) - 1;
 
-            Console.WriteLine("Print a degree of polynome no greater than m ({0})", m);
+            Console.WriteLine(
+                "Print a degree of polynome no greater than m ({0})",
+                m);
             var n = int.Parse(Console.ReadLine());
 
             if ((n <= m) && (n >= 1))
@@ -67,7 +69,8 @@
 
             if (part == PartOfTable.None)
             {
-                Console.WriteLine("It is impossible to calculate the value in the point");
+                Console.WriteLine(
+                    "It is impossible to calculate the value in the point");
                 return CheckX(ref table, n);
             }
 
@@ -128,7 +131,8 @@
                 return PartOfTable.End;
             }
 
-            if ((x >= a + (((n + 1) / 2) * h)) && (x <= b - (((n + 1) / 2) * h)))
+            if ((x >= a + (((n + 1) / 2) * h)) &&
+                (x <= b - (((n + 1) / 2) * h)))
             {
                 return PartOfTable.Middle;
             }
@@ -264,7 +268,8 @@
             for (int i = 0; i < n; i++)
             {
                 factorial *= i + 1;
-                result += (mas[i] * fdtable[z0 - ((i + 1) / 2), i + 1]) / factorial;
+                result += (mas[i] * fdtable[z0 - ((i + 1) / 2), i + 1]) /
+                    factorial;
             }
 
             return result;

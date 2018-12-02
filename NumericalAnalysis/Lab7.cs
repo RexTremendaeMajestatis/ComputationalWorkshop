@@ -24,7 +24,9 @@ namespace NumericalAnalysis
             {
                 table[i, 0] = x0 + (i * h);
                 table[i, 1] = table[i - 1, 1] + 
-                    (h * f(table[i - 1, 0], table[i - 1, 1]));
+                    (h *
+                     f(table[i - 1, 0],
+                       table[i - 1, 1]));
             }
 
             return table;
@@ -51,7 +53,11 @@ namespace NumericalAnalysis
                 ytemp = table[i - 1, 1] +
                     ((h / 2) * f(table[i - 1, 0], table[i - 1, 1]));
                 table[i, 0] = x0 + (i * h);
-                table[i, 1] = table[i - 1, 1] + (h * f(table[i - 1, 0] + (h / 2), ytemp));
+                table[i, 1] = table[i - 1, 1] +
+                    (h *
+                     f(table[i - 1, 0] +
+                       (h / 2),
+                       ytemp));
             }
 
             return table;
@@ -75,10 +81,17 @@ namespace NumericalAnalysis
 
             for (int i = 1; i < m + 1; i++)
             {
-                ytemp = table[i - 1, 1] + (h * f(table[i - 1, 0], table[i - 1, 1]));
+                ytemp = table[i - 1, 1] +
+                    (h *
+                     f(table[i - 1, 0],
+                       table[i - 1, 1]));
                 table[i, 0] = x0 + (i * h);
-                table[i, 1] = table[i - 1, 1] + ((h / 2) *
-                    (f(table[i - 1, 0], table[i - 1, 1]) + f(table[i, 0], ytemp)));
+                table[i, 1] = table[i - 1, 1] +
+                    ((h / 2) *
+                    (f(table[i - 1, 0],
+                       table[i - 1, 1]) +
+                     f(table[i, 0],
+                       ytemp)));
             }
 
             return table;
@@ -106,12 +119,23 @@ namespace NumericalAnalysis
             for (int i = 1; i < m + 1; i++)
             {
                 k1 = h * f(table[i - 1, 0], table[i - 1, 1]);
-                k2 = h * f(table[i - 1, 0] + (h / 2.0), table[i - 1, 1] + (k1 / 2.0));
-                k3 = h * f(table[i - 1, 0] + (h / 2.0), table[i - 1, 1] + (k2 / 2.0));
-                k4 = h * f(table[i - 1, 0] + h, table[i - 1, 1] + k3);
+                k2 = h *
+                    f(table[i - 1, 0] +
+                      (h / 2.0), table[i - 1, 1] +
+                      (k1 / 2.0));
+                k3 = h *
+                    f(table[i - 1, 0] +
+                      (h / 2.0), table[i - 1, 1] +
+                      (k2 / 2.0));
+                k4 = h * 
+                    f(table[i - 1, 0] + h,
+                      table[i - 1, 1] + k3);
 
                 table[i, 0] = x0 + (i * h);
-                table[i, 1] = table[i - 1, 1] + (1 / 6.0) * (k1 + 2 * (k2 + k3) + k4);
+                table[i, 1] = table[i - 1, 1] +
+                    (1 / 6.0) *
+                    (k1 + 2 *
+                     (k2 + k3) + k4);
             }
 
             return table;
@@ -121,11 +145,11 @@ namespace NumericalAnalysis
             Function.G f,
             double[,] nodes,
             double h,
-            int k0,
+            int k,
             int N)
         {
             int m0 = nodes.GetLength(0) - 1;
-            int m1 = N - k0;
+            int m1 = N - k;
             var table = new double[m0 + m1 + 2, 2];
 
             for (int i = 0; i < m0 + 1; i++)
@@ -165,7 +189,8 @@ namespace NumericalAnalysis
 
                 for (int j = 1; j < m0 + 1; j++)
                 {
-                    etha[i - j, j] = etha[i - j + 1, j - 1] - etha[i - j, j - 1]; 
+                    etha[i - j, j] = etha[i - j + 1, j - 1] -
+                        etha[i - j, j - 1]; 
                 }
             }
 

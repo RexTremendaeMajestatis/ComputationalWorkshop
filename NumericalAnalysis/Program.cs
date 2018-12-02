@@ -135,9 +135,33 @@
 
             OutputTools.Print(tailorTable, errorsTailor);
 
+            var m1 = N;
+            // V)
+            Console.WriteLine("V)");
+            var errorsRungeKutt = new double[m1 + 1];
+            var rungeKuttTable = Lab7.RungeKutt(x0, y0, h, 1, N, f);
+
+            for (int i = 0; i < m1 + 1; i++)
+            {
+                errorsRungeKutt[i] = Math.Abs(table[i - k0, 1] - rungeKuttTable[i, 1]);
+            }
+
+            OutputTools.Print(rungeKuttTable, errorsRungeKutt);
+
+            // IV)
+            Console.WriteLine("IV)");
+            var errorsAdams = new double[N - k0 + 1];
+            var adamsTable = Lab7.Adams(f, tailorTable, h, 3, N);
+
+            for (int i = 0; i < N - k0 + 1; i++)
+            {
+                errorsAdams[i] = Math.Abs(table[i, 1] - adamsTable[i, 1]);
+            }
+
+            OutputTools.Print(adamsTable, errorsAdams);
+
             // VI)
             Console.WriteLine("VI)");
-            var m1 = N;
             var errorsEulerI = new double[m1 + 1];
             var errorsEulerII = new double[m1 + 1];
             var errorsEulerIII = new double[m1 + 1];

@@ -72,7 +72,7 @@
         /// </summary>
         /// <param name="table">Table set function</param>
         /// <returns>Table of finite differences</returns>
-        public static double[,] FiniteDifferences(ref double[,] table)
+        public static double[,] FiniteDifferences(double[,] table)
         {
             var n = table.GetLength(0);
             var result = new double[n, n];
@@ -176,7 +176,7 @@
         /// </summary>
         /// <param name="table">Table set function</param>
         /// <returns>List of table set functions</returns>
-        public static List<double[,]> GetGapsOfMonotony(ref double[,] table)
+        public static List<double[,]> GetGapsOfMonotony(double[,] table)
         {
             var gaps = new List<double[,]>();
             var indexes = new List<int>();

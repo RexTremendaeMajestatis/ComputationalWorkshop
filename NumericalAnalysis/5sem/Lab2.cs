@@ -1,4 +1,4 @@
-﻿namespace NumericalAnalysis
+﻿namespace NumericalAnalysis._5sem
 {
     /// <summary>
     /// Laboratory work #2

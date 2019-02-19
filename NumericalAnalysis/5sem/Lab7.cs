@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NumericalAnalysis
+namespace NumericalAnalysis._5sem
 {
     public static class Lab7
     {

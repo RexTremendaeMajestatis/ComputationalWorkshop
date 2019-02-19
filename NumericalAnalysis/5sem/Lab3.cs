@@ -1,4 +1,4 @@
-﻿namespace NumericalAnalysis
+﻿namespace NumericalAnalysis._5sem
 {
     using System;
 

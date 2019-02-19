@@ -1,5 +1,6 @@
 ﻿using System;
-namespace NumericalAnalysis
+
+namespace NumericalAnalysis._5sem
 {
     public static class Lab5
     {

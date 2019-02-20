@@ -4,19 +4,19 @@
 
     public static class Program
     {
-        
-
-
         public static void Main(string[] args)
         {
-            const int dim = 2;
-            var A = new double[dim, dim] { { -401.43, 200.19 }, { 1201.14, -601.62 } };
-            var b = new double[dim] { 200, -600 };
-            var x = NumericalAnalysis._6sem.Lab1.Kramer(A, b);
-            Console.WriteLine("{0}; {1}", x[0], x[1]);
-            OutputTools.Print(NumericalAnalysis._6sem.Lab1.Reverse(A));
-            Console.WriteLine(NumericalAnalysis._6sem.Lab1.M(A));
-            
+            const int dim = 4;
+            var A = new double[dim, dim] { { 0.3, 3.1, 4.4, 2.5 }, 
+                                           { -3.2, 0.5, 7.2, 7.9 }, 
+                                           { 0.0, 3.9, 6.4, -1.7 }, 
+                                           { 0.0, 0.0, -2.9, -4.2 } };
+            var b = new double[dim] { 4, -13, 1, -5 };
+            OutputTools.Print(A);
+            OutputTools.Print(b);
+            OutputTools.Print(TableTools.Wide(A, b));
+            OutputTools.Print(NumericalAnalysis._6sem.Lab2.Gauss(A, b));
+
             Console.ReadLine();
             Main(args);
         }

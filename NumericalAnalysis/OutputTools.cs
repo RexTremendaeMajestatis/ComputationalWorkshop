@@ -23,7 +23,7 @@
                 for (int j = 0; j < table.GetLength(1); j++)
                 {
                     Console.Write(
-                        string.Format("| {0:0.00000000} ",
+                        string.Format("\t| {0:0.00000000} ",
                                       table[i, j]));
                 }
 
@@ -45,7 +45,7 @@
             for (int i = 0; i < vector.Length; i++)
             {
                 Console.WriteLine(
-                    string.Format("{0:000} | {1:000.00000000} ",
+                    string.Format("{0:000} | {1} ",
                                   i + 1, vector[i]));
             }
 

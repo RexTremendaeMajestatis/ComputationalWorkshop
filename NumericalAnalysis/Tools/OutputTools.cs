@@ -1,4 +1,4 @@
-﻿namespace NumericalAnalysis
+﻿namespace Tools
 {
     using System;
 

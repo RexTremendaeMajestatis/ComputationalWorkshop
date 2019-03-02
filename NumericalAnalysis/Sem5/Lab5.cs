@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace NumericalAnalysis._5sem
+﻿namespace Sem5
 {
     public static class Lab5
     {

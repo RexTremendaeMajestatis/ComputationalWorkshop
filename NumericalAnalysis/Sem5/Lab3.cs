@@ -1,4 +1,4 @@
-﻿namespace NumericalAnalysis._5sem
+﻿namespace Sem5
 {
     using System;
 
@@ -186,7 +186,7 @@
         /// <returns>Value of interpolation polynome image</returns>
         private static double BegValue(double x, int n, ref double[,] table)
         {
-            var fdtable = TableTools.FiniteDifferences(table);
+            var fdtable = Tools.TableTools.FiniteDifferences(table);
             var h = table[1, 0] - table[0, 0];
             var t = (x - table[0, 0]) / h;
             var mas = new double[n];
@@ -217,7 +217,7 @@
         /// <returns>Value of interpolation polynome image</returns>
         private static double EndValue(double x, int n, ref double[,] table)
         {
-            var fdtable = TableTools.FiniteDifferences(table);
+            var fdtable = Tools.TableTools.FiniteDifferences(table);
             var m = table.GetLength(0) - 1;
             var h = table[1, 0] - table[0, 0];
             var t = (x - table[m, 0]) / h;
@@ -249,7 +249,7 @@
         /// <returns>Value of interpolation polynome image</returns>
         private static double MidValue(double x, int n, ref double[,] table)
         {
-            var fdtable = TableTools.FiniteDifferences(table);
+            var fdtable = Tools.TableTools.FiniteDifferences(table);
             var z0 = Bounds(x, table);
             var m = table.GetLength(0) - 1;
             var h = table[1, 0] - table[0, 0];

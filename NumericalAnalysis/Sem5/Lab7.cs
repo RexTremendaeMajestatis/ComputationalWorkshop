@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NumericalAnalysis._5sem
+﻿namespace Sem5
 {
     public static class Lab7
     {
@@ -12,7 +8,7 @@ namespace NumericalAnalysis._5sem
             double h,
             int k,
             int N,
-            Function.G f)
+            ComputationalWorkShop.Function.G f)
         {
             var m = N - k + 1;
             var table = new double[m + 1, 2];
@@ -38,7 +34,7 @@ namespace NumericalAnalysis._5sem
             double h,
             int k,
             int N,
-            Function.G f)
+            ComputationalWorkShop.Function.G f)
         {
             var m = N - k + 1;
             var table = new double[m + 1, 2];
@@ -69,7 +65,7 @@ namespace NumericalAnalysis._5sem
             double h,
             int k,
             int N,
-            Function.G f)
+            ComputationalWorkShop.Function.G f)
         {
             var m = N - k + 1;
             var table = new double[m + 1, 2];
@@ -103,7 +99,7 @@ namespace NumericalAnalysis._5sem
             double h,
             int k,
             int N,
-            Function.G f)
+            ComputationalWorkShop.Function.G f)
         {
             var m = N - k + 1;
             var table = new double[m + 1, 2];
@@ -142,7 +138,7 @@ namespace NumericalAnalysis._5sem
         }
 
         public static double[,] Adams(
-            Function.G f,
+            ComputationalWorkShop.Function.G f,
             double[,] nodes,
             double h,
             int k,

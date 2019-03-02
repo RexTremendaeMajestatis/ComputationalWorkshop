@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NumericalAnalysis
+﻿namespace Tools
 {
+    using System;
+
     public static class AlgebraTools
     {
         public static double Determinant(double [,] matrix)

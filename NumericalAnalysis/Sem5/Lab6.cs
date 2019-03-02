@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NumericalAnalysis._5sem
+﻿namespace Sem5
 {
+    using System;
+
     public static class Lab6
     {
         private static readonly double step = 1e-7;
 
-        public static double[] Moments(double a, double b, int N, Function.F w)
+        public static double[] Moments(double a, double b, int N, ComputationalWorkShop.Function.F w)
         {
             var moments = new double[2 * N];
 
@@ -41,7 +39,7 @@ namespace NumericalAnalysis._5sem
                 vector[N - i - 1] = -1 * moments[2 * N - i - 1];
             }
 
-            vector =  AlgebraTools.Cramer(matrix, vector);
+            vector =  Tools.AlgebraTools.Cramer(matrix, vector);
 
             for (int i = 0; i < N; i++)
             {
@@ -55,7 +53,7 @@ namespace NumericalAnalysis._5sem
             double a,
             double b,
             int m,
-            Function.F f)
+            ComputationalWorkShop.Function.F f)
         {
             var h = (b - a) / m;
             var hh = h / 2;
@@ -78,20 +76,20 @@ namespace NumericalAnalysis._5sem
             double a,
             double b,
             int N,
-            Function.F w,
-            Function.F f)
+            ComputationalWorkShop.Function.F w,
+            ComputationalWorkShop.Function.F f)
         {
             var moments = Moments(a, b, N, w);
             var polynome = Lab6.FindPolynome(moments);
-            var x = AlgebraTools.SolveSquare(polynome);
+            var x = Tools.AlgebraTools.SolveSquare(polynome);
             Array.Sort(x);
             var matrix = new double[2, 2] { { 1, 1 }, { x[0], x[1] } };
             var vector = new double[2] { moments[0], moments[1] };
-            var A = AlgebraTools.Cramer(matrix, vector);
+            var A = Tools.AlgebraTools.Cramer(matrix, vector);
             return A[0] * f(x[0]) + A[1] * f(x[1]);
         }
 
-        private static double Moment(double a, double b, int k, Function.F w)
+        private static double Moment(double a, double b, int k, ComputationalWorkShop.Function.F w)
         {
             var h = (int)((b - a) / step);
 
@@ -103,7 +101,7 @@ namespace NumericalAnalysis._5sem
             double b,
             int m,
             int k,
-            Function.F w)
+            ComputationalWorkShop.Function.F w)
         {
             var h = (b - a) / m;
             var sum = 0.0;

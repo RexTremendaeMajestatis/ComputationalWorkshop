@@ -1,4 +1,4 @@
-﻿namespace NumericalAnalysis._5sem
+﻿namespace Sem5
 {
     using System;
 
@@ -84,7 +84,7 @@
         /// <returns>Value of preimage</returns>
         public static double Preimage_I(double p, int n, ref double[,] table)
         {
-            var swappedTable = TableTools.SwapColumns(table);
+            var swappedTable = Tools.TableTools.SwapColumns(table);
             return Lab2.Lagrange(p, n, ref swappedTable);
         }
 

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NumericalAnalysis._6sem
+﻿namespace Sem6
 {
+    using System;
+    using System.Collections.Generic;
+
     class Lab1
     {
         // for dim = 2

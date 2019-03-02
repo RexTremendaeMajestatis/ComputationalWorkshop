@@ -2,7 +2,7 @@
 {
     using System;
 
-    public static class AlgebraTools
+    public static class Algebra
     {
         public static double Determinant(double [,] matrix)
         {

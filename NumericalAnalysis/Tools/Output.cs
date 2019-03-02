@@ -5,7 +5,7 @@
     /// <summary>
     /// Tools for printing tables
     /// </summary>
-    public static class OutputTools
+    public static class Output
     {
         /// <summary>
         /// Print all table values

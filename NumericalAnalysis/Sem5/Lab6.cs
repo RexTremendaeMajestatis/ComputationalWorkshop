@@ -39,7 +39,7 @@
                 vector[N - i - 1] = -1 * moments[2 * N - i - 1];
             }
 
-            vector =  Tools.AlgebraTools.Cramer(matrix, vector);
+            vector =  Tools.Algebra.Cramer(matrix, vector);
 
             for (int i = 0; i < N; i++)
             {
@@ -81,11 +81,11 @@
         {
             var moments = Moments(a, b, N, w);
             var polynome = Lab6.FindPolynome(moments);
-            var x = Tools.AlgebraTools.SolveSquare(polynome);
+            var x = Tools.Algebra.SolveSquare(polynome);
             Array.Sort(x);
             var matrix = new double[2, 2] { { 1, 1 }, { x[0], x[1] } };
             var vector = new double[2] { moments[0], moments[1] };
-            var A = Tools.AlgebraTools.Cramer(matrix, vector);
+            var A = Tools.Algebra.Cramer(matrix, vector);
             return A[0] * f(x[0]) + A[1] * f(x[1]);
         }
 

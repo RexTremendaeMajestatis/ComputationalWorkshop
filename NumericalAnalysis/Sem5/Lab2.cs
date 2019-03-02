@@ -14,7 +14,7 @@
         /// <returns>Value of interpolation polynome image</returns>
         public static double Lagrange(double x, int n, ref double[,] table)
         {
-            var sorted = Tools.TableTools.SortTable(x, ref table);
+            var sorted = Tools.Table.SortTable(x, ref table);
             var result = 0.0;
 
             for (int i = 0; i < n + 1; i++)
@@ -44,8 +44,8 @@
         /// <returns>Value of interpolation polynome image</returns>
         public static double Newton(double x, int n, ref double[,] table)
         {
-            var sorted = Tools.TableTools.SortTable(x, ref table);
-            var ftable = Tools.TableTools.DividedDifferences(sorted, n);
+            var sorted = Tools.Table.SortTable(x, ref table);
+            var ftable = Tools.Table.DividedDifferences(sorted, n);
 
             var m = new double[n + 1];
             m[0] = 1;

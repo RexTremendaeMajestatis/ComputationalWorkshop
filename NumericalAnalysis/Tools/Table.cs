@@ -7,7 +7,7 @@
     /// <summary>
     /// Tools for work with tables
     /// </summary>
-    public static class TableTools
+    public static class Table
     {
         /// <summary>
         /// Sort table by distance to x

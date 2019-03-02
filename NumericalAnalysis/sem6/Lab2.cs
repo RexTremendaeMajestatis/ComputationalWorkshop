@@ -8,7 +8,7 @@
     {
         public static double[] Gauss(double[,] A, double[] b)
         {
-            A = Tools.TableTools.Wide(A, b);
+            A = Tools.Table.Wide(A, b);
             var dim = A.GetLength(0);
             var mainRow = 0;
             var mainCol = 0;
@@ -36,7 +36,7 @@
                         }
 
                         var sb = new StringBuilder();
-                        Tools.OutputTools.Print(
+                        Tools.Output.Print(
                             A,
                             "The main element: " +
                             "(" +
@@ -111,7 +111,7 @@
                 }
 
                 res[actualCol] = A[actualRow, dim];
-                Tools.OutputTools.Print(A, "Expressing variables");
+                Tools.Output.Print(A, "Expressing variables");
             }
 
             return res;

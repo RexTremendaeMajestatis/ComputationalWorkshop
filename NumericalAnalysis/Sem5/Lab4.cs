@@ -84,7 +84,7 @@
         /// <returns>Value of preimage</returns>
         public static double Preimage_I(double p, int n, ref double[,] table)
         {
-            var swappedTable = Tools.TableTools.SwapColumns(table);
+            var swappedTable = Tools.Table.SwapColumns(table);
             return Lab2.Lagrange(p, n, ref swappedTable);
         }
 

@@ -211,5 +211,27 @@
 
             return gaps;
         }
+
+        public static double[,] Wide(double[,] A, double[] b)
+        {
+            var rows = A.GetLength(0);
+            var columns = A.GetLength(1);
+            var result = new double[rows, columns + 1];
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    result[i, j] = A[i, j];
+                }
+            }
+
+            for (int i = 0; i < rows; i++)
+            {
+                result[i, columns] = b[i];
+            }
+
+            return result;
+        }
     }
 }
